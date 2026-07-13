@@ -1,0 +1,28 @@
+/* Typography tokens */
+:root {
+  --font-family-body: 'Roboto', 'Noto Sans', sans-serif;
+  --font-family-heading: 'Roboto', 'Noto Sans', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  /* type scale (px) -- font-size / line-height, from size tokens */
+  --text-xxs-size: 10px;
+  --text-xxs-line-height: 14px;
+  --text-xs-size: 12px;
+  --text-xs-line-height: 16px;
+  --text-sm-size: 14px;
+  --text-sm-line-height: 20px;
+  --text-md-size: 16px;
+  --text-md-line-height: 22px;
+  --text-lg-size: 20px;
+  --text-lg-line-height: 28px;
+  --text-xl-size: 24px;
+  --text-xl-line-height: 28px;
+  --text-2xl-size: 34px;
+  --text-2xl-line-height: 40px;
+  --text-3xl-size: 48px;
+  --text-3xl-line-height: 58px;
+  --text-4xl-size: 60px;
+  --text-4xl-line-height: 72px;
+}

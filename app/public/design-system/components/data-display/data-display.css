@@ -1,0 +1,132 @@
+/* ---------- Badge (dot/count status) ---------- */
+.ds-badge-dot { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm-size); }
+.ds-badge-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--dot-color, var(--brand-primary-400)); }
+.ds-badge-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-full);
+  background: var(--brand-danger-500); color: #fff; font-size: 11px; font-weight: var(--font-weight-medium);
+}
+
+/* ---------- Tag ---------- */
+.ds-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: var(--text-xs-size); border: var(--border-sm) solid transparent;
+}
+.ds-tag--neutral { background: var(--surface-tag-background-neutral-default); border-color: var(--surface-tag-border-neutral-default); color: var(--surface-tag-label-neutral-default); }
+.ds-tag--primary { background: var(--surface-tag-background-primary-default); border-color: var(--surface-tag-border-primary-default); color: var(--surface-tag-label-primary-default); }
+.ds-tag--green { background: var(--surface-tag-background-green-default); border-color: var(--surface-tag-border-green-default); color: var(--surface-tag-label-green-default); }
+.ds-tag--red { background: var(--surface-tag-background-red-default); border-color: var(--surface-tag-border-red-default); color: var(--surface-tag-label-red-default); }
+.ds-tag--secondary { background: var(--surface-tag-background-secondary-default); border-color: var(--surface-tag-border-secondary-default); color: var(--surface-tag-label-secondary-default); }
+.ds-tag--blue { background: var(--surface-tag-background-blue-default); border-color: var(--surface-tag-border-blue-default); color: var(--surface-tag-label-blue-default); }
+
+/* ---------- Chip ---------- */
+.ds-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: var(--space-component-padding-xs) var(--space-component-padding-md);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm-size);
+  border: var(--border-sm) solid var(--interactive-input-chip-border-default);
+  background: var(--interactive-input-chip-surface-default);
+  color: var(--interactive-input-chip-label-default);
+  cursor: pointer;
+}
+.ds-chip:hover { border-color: var(--interactive-input-chip-border-hover); }
+.ds-chip--filter { border-color: var(--interactive-filter-chip-border-default); background: var(--interactive-filter-chip-surface-default); color: var(--interactive-filter-chip-label-default); }
+.ds-chip--filter.is-selected { background: var(--interactive-filter-chip-surface-selected); }
+.ds-chip--action { border-color: var(--interactive-action-chip-border-default); background: var(--interactive-action-chip-surface-default); color: var(--interactive-action-chip-label-default); }
+.ds-chip--action.is-selected { color: var(--interactive-action-chip-label-selected); }
+.ds-chip-close { display: inline-flex; opacity: 0.6; }
+.ds-chip-close:hover { opacity: 1; }
+
+/* ---------- Card ---------- */
+.ds-card {
+  background: var(--surface-card-surface-default);
+  border: var(--border-sm) solid var(--surface-card-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-component-padding-lg);
+}
+.ds-card-title { font-size: var(--text-md-size); font-weight: var(--font-weight-medium); color: var(--text-heading-primary-neutral); margin-bottom: var(--space-component-gap-sm); }
+
+/* ---------- List ---------- */
+.ds-list { display: flex; flex-direction: column; }
+.ds-list-item {
+  display: flex; align-items: center; gap: var(--space-component-gap-md);
+  padding: var(--space-component-padding-md) var(--space-component-padding-sm);
+  background: var(--interactive-list-background-default);
+  border-bottom: 1px solid var(--global-divider-default);
+  cursor: pointer;
+}
+.ds-list-item:hover { background: var(--interactive-list-background-hover); }
+.ds-list-item-icon { color: var(--interactive-list-icon-default); flex-shrink: 0; }
+.ds-list-item-title { color: var(--interactive-list-label-title); font-size: var(--text-md-size); }
+.ds-list-item-subtitle { color: var(--interactive-list-label-subtitle); font-size: var(--text-sm-size); }
+.ds-list-item-caption { color: var(--interactive-list-label-caption); font-size: var(--text-xs-size); margin-left: auto; }
+
+/* ---------- Step ---------- */
+.ds-steps { display: flex; align-items: center; background: var(--global-background-surface); border-radius: var(--radius-md); padding: var(--space-layout-section-padding-sm) var(--space-layout-section-padding-md); }
+.ds-step { display: flex; align-items: center; flex: 0 0 auto; }
+.ds-step-indicator {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: var(--component-height-md); height: var(--component-height-md); border-radius: var(--radius-full);
+  border: var(--border-sm) solid var(--interactive-step-indicator-border-default);
+  background: var(--interactive-step-indicator-surface-default);
+  color: var(--interactive-step-indicator-label-default);
+  font-size: var(--text-md-size); font-weight: var(--font-weight-regular);
+}
+.ds-step.is-current .ds-step-indicator { background: var(--interactive-step-indicator-surface-current); border-color: var(--interactive-step-indicator-border-current); color: var(--interactive-step-indicator-label-current); }
+.ds-step.is-finished .ds-step-indicator { background: var(--interactive-step-indicator-surface-finished); border-color: var(--interactive-step-indicator-border-finished); color: var(--interactive-step-indicator-icon-finished); }
+.ds-step.is-error .ds-step-indicator { background: var(--interactive-step-indicator-surface-error); border-color: var(--interactive-step-indicator-border-error); color: var(--interactive-step-indicator-icon-error); }
+.ds-step-label { margin-left: var(--space-component-gap-sm); font-size: var(--text-md-size); font-weight: var(--font-weight-regular); color: var(--text-heading-secondary-neutral); white-space: nowrap; }
+.ds-step.is-current .ds-step-label { color: var(--text-heading-primary-neutral); font-weight: var(--font-weight-medium); }
+.ds-step.is-finished .ds-step-label, .ds-step.is-error .ds-step-label { color: var(--text-heading-primary-neutral); }
+.ds-step-connector { flex: 1; height: var(--border-sm); background: var(--interactive-step-connector-default); margin: 0 var(--space-component-gap-sm); }
+.ds-step-connector.is-finished { background: var(--interactive-step-connector-finished); }
+
+/* ---------- Thumbnail / Avatar ---------- */
+.ds-thumbnail {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--surface-thumbnail-surface);
+  color: var(--surface-thumbnail-icon);
+  overflow: hidden;
+}
+.ds-avatar {
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand-primary-75);
+  color: var(--brand-primary-600);
+  font-weight: var(--font-weight-medium);
+  overflow: hidden; flex-shrink: 0;
+}
+
+/* ---------- Image (crop placeholder) ---------- */
+.ds-image-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand-neutral-200);
+  color: var(--brand-neutral-700);
+  border-radius: var(--radius-md);
+}
+
+/* ---------- Table ---------- */
+.ds-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm-size); }
+.ds-table thead th {
+  background: var(--interactive-table-header-background-default);
+  color: var(--interactive-table-header-label-default);
+  text-align: left; font-weight: var(--font-weight-medium);
+  height: var(--component-height-xl);
+  padding: 0 var(--space-component-padding-md);
+  border-bottom: var(--border-sm) solid var(--global-divider-default);
+}
+.ds-table tbody td {
+  height: var(--component-height-xl);
+  padding: 0 var(--space-component-padding-md);
+  color: var(--interactive-table-cell-label-default);
+  border-bottom: 1px solid var(--global-divider-default);
+}
+.ds-table tbody tr { background: var(--interactive-table-row-background-default); }
+.ds-table tbody tr:hover { background: var(--interactive-table-row-background-hover); }
+.ds-table tbody tr.is-highlighted { background: var(--interactive-table-row-background-highlighted); }
+.ds-table tbody tr.is-selected { background: var(--interactive-table-row-background-selected); }
+.ds-table-cell-caption { color: var(--interactive-table-cell-caption-default); font-size: var(--text-xs-size); }

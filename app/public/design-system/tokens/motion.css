@@ -1,0 +1,8 @@
+/* Motion tokens */
+:root {
+  --duration-instant: 0ms; /* @kind other */
+  --duration-fast: 100ms; /* @kind other */
+  --duration-normal: 200ms; /* @kind other */
+  --duration-slow: 300ms; /* @kind other */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+}

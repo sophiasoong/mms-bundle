@@ -1,0 +1,11 @@
+/* Base resets + shared utility classes used across components */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  font-family: var(--font-family-body);
+  color: var(--text-body-primary-neutral);
+  background: var(--global-background-page);
+}
+.ds-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-primary);
+}

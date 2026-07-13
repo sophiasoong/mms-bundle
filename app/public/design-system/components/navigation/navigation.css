@@ -1,0 +1,54 @@
+/* ---------- Breadcrumb ---------- */
+.ds-breadcrumb { display: flex; align-items: center; gap: var(--space-component-gap-xs); font-size: var(--text-sm-size); }
+.ds-breadcrumb-item { color: var(--interactive-breadcrumb-item-label-default); cursor: pointer; }
+.ds-breadcrumb-item:hover { color: var(--interactive-breadcrumb-item-label-hover); border-bottom: 1px solid var(--interactive-breadcrumb-item-border-hover); }
+.ds-breadcrumb-item.is-active { color: var(--interactive-breadcrumb-item-label-active); cursor: default; }
+.ds-breadcrumb-sep { color: var(--interactive-breadcrumb-item-label-default); }
+
+/* ---------- Tab (line style) ---------- */
+.ds-tabs { display: flex; border-bottom: var(--border-sm) solid var(--brand-neutral-300); gap: var(--space-layout-section-gap-xs); }
+.ds-tab {
+  display: flex; align-items: center; gap: var(--space-component-gap-xs);
+  padding: var(--space-component-padding-sm) var(--space-component-padding-xs);
+  font-size: var(--text-md-size); color: var(--interactive-tab-label-line-default);
+  border-bottom: 2px solid var(--interactive-tab-indicator-line-default);
+  cursor: pointer; margin-bottom: -1px;
+}
+.ds-tab:hover { color: var(--interactive-tab-label-line-hover); }
+.ds-tab.is-active { color: var(--interactive-tab-label-line-active); border-color: var(--interactive-tab-indicator-line-active); }
+.ds-tab.is-disabled { color: var(--interactive-tab-label-line-disabled); cursor: not-allowed; }
+.ds-tab-badge { background: var(--interactive-tab-badge-surface-line-default); color: var(--interactive-tab-badge-label-line-default); border-radius: var(--radius-full); font-size: var(--text-xxs-size); padding: 0 6px; }
+.ds-tab.is-active .ds-tab-badge { background: var(--interactive-tab-badge-surface-line-active); color: var(--interactive-tab-badge-label-line-active); }
+
+/* Segment tab (pill group) */
+.ds-tabs-segment { display: inline-flex; border-radius: var(--radius-md); border: var(--border-sm) solid var(--interactive-tab-border-segment-default); overflow: hidden; }
+.ds-tab-segment {
+  padding: var(--space-component-padding-xs) var(--space-component-padding-md);
+  font-size: var(--text-sm-size); color: var(--interactive-tab-label-segment-default);
+  background: var(--interactive-tab-surface-segment-default); cursor: pointer;
+}
+.ds-tab-segment.is-active { background: var(--interactive-tab-surface-segment-active); color: var(--interactive-tab-label-segment-active); }
+
+/* ---------- Anchor ---------- */
+.ds-anchor-list { display: flex; flex-direction: column; gap: 2px; border-left: 2px solid var(--brand-neutral-300); }
+.ds-anchor-item { padding: 6px var(--space-component-padding-md); font-size: var(--text-sm-size); color: var(--interactive-tab-label-anchor-default); cursor: pointer; border-left: 2px solid transparent; margin-left: -2px; }
+.ds-anchor-item:hover { color: var(--interactive-tab-label-anchor-hover); }
+.ds-anchor-item.is-active { color: var(--interactive-tab-label-anchor-active); border-left-color: var(--interactive-tab-label-anchor-active); }
+
+/* ---------- Pagination ---------- */
+.ds-pagination { display: flex; align-items: center; gap: var(--space-component-gap-xs); }
+.ds-page-nav, .ds-page-item {
+  display: flex; align-items: center; justify-content: center;
+  min-width: var(--component-height-md); height: var(--component-height-md);
+  border-radius: var(--radius-sm);
+  border: var(--border-sm) solid var(--interactive-pagination-item-border-default);
+  background: var(--interactive-pagination-item-surface-default);
+  color: var(--interactive-pagination-item-label-default);
+  font-size: var(--text-sm-size); cursor: pointer;
+}
+.ds-page-nav { border-color: var(--interactive-pagination-nav-border-default); color: var(--interactive-pagination-nav-icon-default); }
+.ds-page-nav:hover { border-color: var(--interactive-pagination-nav-border-hover); color: var(--interactive-pagination-nav-icon-hover); }
+.ds-page-nav:disabled { color: var(--interactive-pagination-nav-icon-disabled); border-color: var(--interactive-pagination-nav-border-disabled); background: var(--interactive-pagination-nav-surface-disabled); cursor: not-allowed; }
+.ds-page-item.is-current { border-color: var(--interactive-pagination-item-border-current); color: var(--interactive-pagination-item-label-current); font-weight: var(--font-weight-medium); }
+.ds-page-item:hover:not(.is-current) { border-color: var(--interactive-pagination-item-border-hover); }
+.ds-page-ellipsis { color: var(--interactive-pagination-ellipsis-default); padding: 0 4px; }

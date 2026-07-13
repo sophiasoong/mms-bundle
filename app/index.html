@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bundle Setting — Overview</title>
+
+  <link rel="stylesheet" href="/design-system/styles.css" />
+  <link rel="stylesheet" href="/design-system/components/forms/forms.css" />
+  <link rel="stylesheet" href="/design-system/components/data-display/data-display.css" />
+  <link rel="stylesheet" href="/design-system/components/feedback/feedback.css" />
+  <link rel="stylesheet" href="/design-system/components/layout/layout.css" />
+  <link rel="stylesheet" href="/design-system/components/navigation/navigation.css" />
+
+  <style>
+    html, body, #root { height: 100%; margin: 0; }
+    body { font-family: 'Roboto', sans-serif; background: var(--global-background-page); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    .ds-searchbar-md.ds-field-shell,
+    .ds-searchbar-lg.ds-field-shell {
+      gap: var(--space-component-gap-xs);
+      padding: 0 var(--space-component-padding-sm) !important;
+      border-color: var(--interactive-searchbar-border-default);
+      background: var(--interactive-searchbar-surface-default);
+    }
+    .ds-searchbar-md.ds-field-shell { height: var(--component-height-md); }
+    .ds-searchbar-lg.ds-field-shell { height: var(--component-height-lg); }
+    .ds-searchbar-md.ds-field-shell:hover,
+    .ds-searchbar-lg.ds-field-shell:hover { border-color: var(--interactive-searchbar-border-hover); }
+    .ds-searchbar-md.ds-field-shell.is-focus,
+    .ds-searchbar-lg.ds-field-shell.is-focus { border-color: var(--interactive-searchbar-border-focus); }
+    .ds-searchbar-md .ds-field-input,
+    .ds-searchbar-lg .ds-field-input {
+      font-size: var(--text-sm-size);
+      line-height: var(--text-sm-line-height);
+      color: var(--interactive-searchbar-label-default);
+      margin-left: 0 !important;
+    }
+    .ds-searchbar-md .ds-field-input::placeholder,
+    .ds-searchbar-lg .ds-field-input::placeholder { color: var(--interactive-searchbar-placeholder-default); }
+    .ds-searchbar-md .ds-searchbar-action,
+    .ds-searchbar-lg .ds-searchbar-action {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      background: transparent;
+      border: none;
+      color: var(--interactive-searchbar-action-search-icon-default);
+      margin-right: 0 !important;
+    }
+    .ds-searchbar-md .ds-searchbar-action svg,
+    .ds-searchbar-lg .ds-searchbar-action svg {
+      width: 16px !important;
+      height: 16px !important;
+      flex-shrink: 0;
+    }
+    .filter-chip-md.ds-chip {
+      height: var(--component-height-md);
+      gap: var(--space-component-gap-sm);
+      padding: 0 var(--space-component-padding-lg) 0 var(--space-component-padding-md);
+    }
+    .page-title-fig .ds-page-title-heading {
+      font-size: var(--text-xl-size);
+      line-height: var(--text-xl-line-height);
+      font-weight: var(--font-weight-regular);
+    }
+    .goto-input.ds-field-shell {
+      height: var(--component-height-md);
+      padding: 0 var(--space-component-padding-sm) !important;
+    }
+    .goto-input .ds-field-input {
+      text-align: center;
+      font-size: var(--text-sm-size);
+    }
+    .pagesize-select-fig .ds-field-shell {
+      width: auto;
+      height: var(--component-height-md);
+      gap: var(--space-component-gap-sm);
+      padding: 0 var(--space-component-padding-md) !important;
+      border-color: var(--interactive-button-border-primary-outline-default);
+      background: var(--interactive-button-surface-primary-outline-default);
+    }
+    .pagesize-select-fig .ds-field-shell:hover {
+      border-color: var(--interactive-button-border-primary-outline-hover);
+    }
+    .pagesize-select-fig .ds-field-shell span:first-child {
+      color: var(--interactive-button-label-primary-outline-default) !important;
+      font-size: var(--text-sm-size);
+      white-space: nowrap;
+    }
+    .pagesize-select-fig .ds-field-icon {
+      color: var(--interactive-button-icon-primary-outline-default);
+    }
+    .pagesize-select-fig .ds-select-panel {
+      left: auto !important;
+      right: 0 !important;
+      top: auto !important;
+      bottom: 100% !important;
+      margin-top: 0 !important;
+      margin-bottom: 4px;
+      width: max-content !important;
+      min-width: 100%;
+    }
+    .action-icon-btn.ds-icon-btn {
+      width: var(--component-height-xs);
+      height: var(--component-height-xs);
+      flex-shrink: 0;
+    }
+    .filter-dropdown-panel .ds-checkbox-row {
+      font-size: var(--text-sm-size);
+    }
+    .ds-field-md.ds-field-shell {
+      height: var(--component-height-md);
+    }
+    .ds-field-md .ds-field-input {
+      font-size: var(--text-sm-size);
+      line-height: var(--text-sm-line-height);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

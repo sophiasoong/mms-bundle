@@ -1,0 +1,10 @@
+/* Shadow / elevation tokens */
+:root {
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(30,30,30,0.08);
+  --shadow-md: 0 2px 8px rgba(30,30,30,0.10);
+  --shadow-lg: 0 4px 16px rgba(30,30,30,0.12);
+  --shadow-xl: 0 8px 24px rgba(30,30,30,0.16);
+  --shadow-focus-primary: 0 0 0 3px #5244ee33;
+  --shadow-focus-danger: 0 0 0 3px #ffccc7;
+}

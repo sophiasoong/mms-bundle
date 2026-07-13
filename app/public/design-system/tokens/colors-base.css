@@ -1,0 +1,49 @@
+/* Base brand color scales — primary (indigo/violet), secondary (amber), danger, green, blue, neutral.
+   Verbatim from shoalter-design-tokens.json (color.brand-*). */
+:root {
+  --brand-blue-100: #e6f7ff;
+  --brand-blue-300: #91d5ff;
+  --brand-blue-600: #1890ff;
+  --brand-danger-100: #fff1f0;
+  --brand-danger-200: #ffccc7;
+  --brand-danger-300: #ffa39e;
+  --brand-danger-400: #ff7875;
+  --brand-danger-500: #ff4d4f;
+  --brand-danger-600: #f5222d;
+  --brand-danger-700: #cf1322;
+  --brand-feedback-danger: #ff4d4f;
+  --brand-feedback-highlight: #fff600;
+  --brand-feedback-info: #1890ff;
+  --brand-feedback-success: #52c41a;
+  --brand-feedback-warning: #ffa000;
+  --brand-green-100: #f6ffed;
+  --brand-green-300: #b7eb8f;
+  --brand-green-600: #52c41a;
+  --brand-neutral-0: #ffffff;
+  --brand-neutral-100: #fbfbfb;
+  --brand-neutral-200: #f5f5f5;
+  --brand-neutral-300: #f4f4f4;
+  --brand-neutral-400: #e5e5e5;
+  --brand-neutral-500: #d9d9d9;
+  --brand-neutral-600: #bfbfbf;
+  --brand-neutral-700: #a6a6a6;
+  --brand-neutral-800: #5c5c5c;
+  --brand-neutral-900: #1e1e1e;
+  --brand-neutral-950: #222222;
+  --brand-primary-100: #d4d0fb;
+  --brand-primary-200: #a9a1f7;
+  --brand-primary-300: #7d73f2;
+  --brand-primary-400: #5244ee;
+  --brand-primary-50: #f7f6ff;
+  --brand-primary-600: #1f11bb;
+  --brand-primary-700: #110964;
+  --brand-primary-75: #f1ecff;
+  --brand-secondary-100: #fff7e6;
+  --brand-secondary-200: #ffeccc;
+  --brand-secondary-25: #fffbf2;
+  --brand-secondary-300: #ffd591;
+  --brand-secondary-50: #fff6e5;
+  --brand-secondary-600: #ffa000;
+  --brand-secondary-700: #fa8c16;
+  --brand-secondary-800: #996100;
+}

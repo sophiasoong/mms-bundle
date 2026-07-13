@@ -1,0 +1,7 @@
+/* Opacity tokens */
+:root {
+  --opacity-0: 0; /* @kind other */
+  --opacity-20: 0.2; /* @kind other */
+  --opacity-60: 0.6; /* @kind other */
+  --opacity-40: 0.4; /* @kind other */
+}

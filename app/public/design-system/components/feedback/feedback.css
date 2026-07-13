@@ -1,0 +1,84 @@
+/* ---------- Message / Hint (inline helper text with icon) ---------- */
+.ds-message { display: flex; gap: var(--space-component-gap-xs); align-items: flex-start; font-size: var(--text-sm-size); }
+.ds-message-icon { flex-shrink: 0; margin-top: 2px; }
+.ds-message--default { color: var(--text-helper-default); }
+.ds-message--error { color: var(--text-helper-error); }
+
+.ds-hint { display: inline-flex; align-items: center; gap: 4px; color: var(--brand-neutral-700); cursor: help; position: relative; }
+
+/* ---------- Tooltip ---------- */
+.ds-tooltip {
+  background: var(--surface-tooltip-surface-default);
+  color: var(--surface-tooltip-label-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-component-padding-sm) var(--space-component-padding-md);
+  font-size: var(--text-xs-size);
+  box-shadow: var(--shadow-lg);
+  max-width: var(--component-width-tooltip-md);
+}
+
+/* ---------- Banner ---------- */
+.ds-banner {
+  display: flex; gap: var(--space-component-gap-sm); align-items: flex-start;
+  border-radius: var(--radius-md);
+  border: var(--border-sm) solid var(--feedback-banner-border-default);
+  background: var(--feedback-banner-surface-default);
+  padding: var(--space-component-padding-md);
+}
+.ds-banner--info { border-color: var(--feedback-banner-border-info); background: var(--feedback-banner-surface-info); }
+.ds-banner--warning { border-color: var(--feedback-banner-border-warning); background: var(--feedback-banner-surface-warning); }
+.ds-banner--danger { border-color: var(--feedback-banner-border-danger); background: var(--feedback-banner-surface-danger); }
+.ds-banner-icon--default { color: var(--feedback-banner-icon-default); }
+.ds-banner-icon--info { color: var(--feedback-banner-icon-info); }
+.ds-banner-icon--warning { color: var(--feedback-banner-icon-warning); }
+.ds-banner-icon--danger { color: var(--feedback-banner-icon-danger); }
+.ds-banner-title { font-weight: var(--font-weight-medium); color: var(--text-body-primary-neutral); margin-bottom: 2px; }
+.ds-banner-body { font-size: var(--text-sm-size); color: var(--text-body-secondary-neutral); }
+
+/* ---------- Toast ---------- */
+.ds-toast {
+  display: flex; gap: var(--space-component-gap-sm); align-items: flex-start;
+  border-radius: var(--radius-md);
+  border: var(--border-sm) solid var(--feedback-toast-border-success);
+  background: var(--feedback-toast-surface-success);
+  padding: var(--space-component-padding-md);
+  box-shadow: var(--shadow-md);
+  min-width: 280px;
+}
+.ds-toast--success { border-color: var(--feedback-toast-border-success); background: var(--feedback-toast-surface-success); }
+.ds-toast--success .ds-toast-icon { color: var(--feedback-toast-icon-success); }
+.ds-toast--warning { border-color: var(--feedback-toast-border-warning); background: var(--feedback-toast-surface-warning); }
+.ds-toast--warning .ds-toast-icon { color: var(--feedback-toast-icon-warning); }
+.ds-toast--danger { border-color: var(--feedback-toast-border-danger); background: var(--feedback-toast-surface-danger); }
+.ds-toast--danger .ds-toast-icon { color: var(--feedback-toast-icon-danger); }
+.ds-toast--info { border-color: var(--feedback-toast-border-info); background: var(--feedback-toast-surface-info); }
+.ds-toast--info .ds-toast-icon { color: var(--feedback-toast-icon-info); }
+
+/* ---------- Modal / Alert-Dialog ---------- */
+.ds-modal-overlay { position: fixed; inset: 0; background: var(--global-overlay-default); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.ds-modal {
+  background: var(--surface-modal-surface-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  width: var(--component-width-modal-sm);
+  max-width: calc(100vw - 32px);
+}
+.ds-modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--space-component-padding-lg);
+  border-bottom: var(--border-sm) solid var(--global-divider-default);
+}
+.ds-modal-title { font-size: var(--text-md-size); font-weight: var(--font-weight-medium); color: var(--text-heading-primary-neutral); }
+.ds-modal-body { padding: var(--space-component-padding-lg); font-size: var(--text-sm-size); color: var(--text-body-secondary-neutral); }
+.ds-modal-actions {
+  display: flex; justify-content: flex-end; gap: var(--space-component-gap-sm);
+  padding: var(--space-component-padding-lg);
+  border-top: var(--border-sm) solid var(--global-divider-default);
+}
+.ds-alert-dialog { text-align: center; }
+.ds-alert-dialog-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-component-gap-md); }
+
+/* ---------- Indicator (progress) ---------- */
+.ds-indicator-track { width: 100%; height: 6px; border-radius: var(--radius-full); background: var(--brand-neutral-200); overflow: hidden; }
+.ds-indicator-fill { height: 100%; background: var(--brand-primary-400); border-radius: var(--radius-full); transition: width var(--duration-normal) var(--ease-standard); }
+.ds-indicator-circle { transform: rotate(-90deg); }

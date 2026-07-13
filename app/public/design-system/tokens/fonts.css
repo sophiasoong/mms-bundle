@@ -1,0 +1,14 @@
+/* Webfonts — Roboto (English body/heading) + Noto Sans (Mandarin/CJK fallback).
+   Both are the exact families declared in shoalter-design-tokens.json (font.english / font.mandarin).
+   Loaded from Google Fonts (weights 400/500/600 match typography-font-weight-regular/medium/bold). */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+HK:wght@400;500;600&display=swap');
+
+/* Best-effort self-hosted @font-face for the primary weight, so the family
+   is registered even if the stylesheet @import above is blocked or slow. */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2') format('woff2');
+}

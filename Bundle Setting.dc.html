@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/colors-base.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/colors-semantic.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/opacity.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/tokens/shadow.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/base.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/styles.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/components/forms/forms.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/components/data-display/data-display.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/components/feedback/feedback.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/components/layout/layout.css">
+  <link rel="stylesheet" href="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/components/navigation/navigation.css">
+  <script src="_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/_ds_bundle.js"></script>
+  <style>
+    html, body { margin: 0; height: 100%; font-family: 'Roboto', sans-serif; background: var(--global-background-page); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+  </style>
+</helmet>
+
+<div style="display:flex; height:100vh; width:100%; background:var(--global-background-page);">
+
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Sidebar" from="" logo="{{ sidebarLogo }}" items="{{ sidebarItems }}" active-value="bundle" hint-size="220px,100%"></x-import>
+
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+    <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Topbar" from="" left="{{ topbarLeft }}" right="{{ topbarRight }}" hint-size="100%,64px"></x-import>
+
+    
+
+    <div style="flex:1; overflow:auto; padding:{{ contentPadding }}px;">
+
+      <div style="font-size:12px; color:var(--text-caption-primary); margin-bottom:8px;">Home/ Product and Inventory/ Bundle Setting</div>
+
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.PageTitle" from="" title="Bundle Setting" actions="{{ pageActions }}" hint-size="100%,48px"></x-import>
+
+      <sc-if value="{{ isDropdownFilters }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:{{ sectionGap }}px 0;">
+          <div style="width:200px;">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Select" from="" placeholder="Storefront Code" options="{{ storefrontOptions }}" value="{{ storefrontValue }}" on-change="{{ setStorefront }}" hint-size="200px,40px"></x-import>
+          </div>
+          <div style="width:220px;">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Select" from="" placeholder="Product Ready Method" options="{{ readyMethodOptions }}" value="{{ readyMethodValue }}" on-change="{{ setReadyMethod }}" hint-size="220px,40px"></x-import>
+          </div>
+          <div style="width:160px;">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Select" from="" placeholder="Status" options="{{ statusOptions }}" value="{{ statusValue }}" on-change="{{ setStatus }}" hint-size="160px,40px"></x-import>
+          </div>
+          <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Button" from="" style="primary-ghost" size="md" on-click="{{ clearAll }}" hint-size="auto,40px">Clear All</x-import>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isChipFilters }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:{{ sectionGap }}px 0;">
+          <sc-for list="{{ storefrontChips }}" as="chip" hint-placeholder-count="2">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Chip" from="" variant="filter" selected="{{ chip.selected }}" on-click="{{ chip.onClick }}" hint-size="auto,32px">{{ chip.label }}</x-import>
+          </sc-for>
+          <sc-for list="{{ readyChips }}" as="chip" hint-placeholder-count="2">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Chip" from="" variant="filter" selected="{{ chip.selected }}" on-click="{{ chip.onClick }}" hint-size="auto,32px">{{ chip.label }}</x-import>
+          </sc-for>
+          <sc-for list="{{ statusChips }}" as="chip" hint-placeholder-count="2">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Chip" from="" variant="filter" selected="{{ chip.selected }}" on-click="{{ chip.onClick }}" hint-size="auto,32px">{{ chip.label }}</x-import>
+          </sc-for>
+          <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Button" from="" style="primary-ghost" size="md" on-click="{{ clearAll }}" hint-size="auto,40px">Clear All</x-import>
+        </div>
+      </sc-if>
+
+      <div style="font-size:14px; color:var(--text-body-secondary-neutral); margin-bottom:{{ resultsGap }}px;">{{ resultsLabel }}</div>
+
+      <sc-if value="{{ isTableView }}" hint-placeholder-val="{{ true }}">
+        <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Table" from="" columns="{{ tableColumns }}" rows="{{ tableRows }}" hint-size="100%,auto"></x-import>
+      </sc-if>
+
+      <sc-if value="{{ isCardView }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:{{ cardGap }}px;">
+          <sc-for list="{{ bundleCards }}" as="card" hint-placeholder-count="4">
+            <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Card" from="" title="{{ card.title }}" actions="{{ card.actions }}" hint-size="100%,auto">
+              {{ card.body }}
+            </x-import>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="width:120px;">
+          <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Select" from="" options="{{ pageSizeOptions }}" value="{{ pageSizeValue }}" on-change="{{ setPageSize }}" hint-size="120px,40px"></x-import>
+        </div>
+        <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Pagination" from="" current="{{ page }}" total="27" on-change="{{ setPage }}" hint-size="auto,40px"></x-import>
+      </div>
+
+      <div style="height:80px;"></div>
+    </div><div style="display:flex; align-items:center; justify-content:space-between; padding:{{ footerPadding }}px 24px; background:var(--global-background-surface); border-top:1px solid var(--global-divider-default);">
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Dropdown" from="" align="left" trigger="{{ actionTrigger }}" items="{{ actionItems }}" hint-size="auto,40px"></x-import>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span style="font-size:14px; color:var(--text-body-secondary-neutral);">{{ selectedLabel }}</span>
+        <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Button" from="" style="primary-outline" size="md" disabled="{{ noneSelected }}" hint-size="auto,40px">Export</x-import>
+        <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Button" from="" style="primary-solid" size="md" disabled="{{ noneSelected }}" hint-size="auto,40px">Export Selected</x-import>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<sc-if value="{{ showAudit }}">
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Modal" from="" title="Audit" size="sm" on-close="{{ closeModal }}" actions="{{ auditActions }}" hint-size="432px,auto">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="audit-row"><span style="font-size:14px; color:var(--text-body-secondary-neutral);">Create By</span><span style="font-size:14px; color:var(--text-body-primary-neutral);">—</span></div>
+      <div class="audit-row"><span style="font-size:14px; color:var(--text-body-secondary-neutral);">Create Time</span><span style="font-size:14px; color:var(--text-body-primary-neutral);">—</span></div>
+      <div class="audit-row"><span style="font-size:14px; color:var(--text-body-secondary-neutral);">Last Updated By</span><span style="font-size:14px; color:var(--text-body-primary-neutral);">—</span></div>
+      <div class="audit-row"><span style="font-size:14px; color:var(--text-body-secondary-neutral);">Last Updated Time</span><span style="font-size:14px; color:var(--text-body-primary-neutral);">—</span></div>
+    </div>
+  </x-import>
+</sc-if>
+
+<sc-if value="{{ showEditBundle }}">
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.ActionPanel" from="" title="{{ editBundleTitle }}" on-close="{{ closeModal }}" footer="{{ editBundleFooter }}" hint-size="480px,100%">
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="field-row"><span class="field-label">Parent SKU ID</span><span class="field-value">—</span></div>
+      <div class="field-row"><span class="field-label">Storefront Code</span><span class="field-value">—</span></div>
+      <div class="field-row"><span class="field-label">Product Ready Method</span><span class="field-value">—</span></div>
+      <div class="field-row"><span class="field-label">Available QTY</span><span class="field-value">—</span></div>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Input" from="" label="Bundle Name (Traditional Chinese)" placeholder="Enter bundle name" hint-size="100%,64px"></x-import>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Input" from="" label="Bundle Name (English)" placeholder="Enter bundle name" hint-size="100%,64px"></x-import>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.NumberInput" from="" label="Pre-Set QTY" value="0" min="0" hint-size="100%,64px"></x-import>
+      <div style="border:1px dashed var(--global-divider-default); border-radius:8px; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="{{ openBundleSet }}">
+        <span style="font-size:14px; color:var(--text-body-secondary-brand);">+ Add SKU to bundle</span>
+      </div>
+    </div>
+  </x-import>
+</sc-if>
+
+<sc-if value="{{ showBundleSet }}">
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.ActionPanel" from="" title="Bundle Set" on-close="{{ closeBundleSet }}" footer="{{ bundleSetFooter }}" hint-size="560px,100%">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; gap:12px;">
+        <div style="flex:1;"><x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Input" from="" placeholder="SKU ID" hint-size="100%,40px"></x-import></div>
+        <div style="flex:1;"><x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Input" from="" placeholder="SKU Name" hint-size="100%,40px"></x-import></div>
+      </div>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Button" from="" style="primary-ghost" size="sm" hint-size="auto,32px">Clear All</x-import>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Table" from="" columns="{{ skuColumns }}" rows="{{ skuRows }}" hint-size="100%,auto"></x-import>
+      <div style="font-size:12px; color:var(--text-caption-primary); text-align:center;">0 results</div>
+    </div>
+  </x-import>
+</sc-if>
+
+<sc-if value="{{ showBatchOption }}">
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Modal" from="" title="Batch Upload Option" size="md" on-close="{{ closeModal }}" actions="{{ batchOptionActions }}" hint-size="656px,auto">
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div>
+        <div style="font-size:14px; color:var(--text-body-primary-neutral); margin-bottom:8px; font-weight:500;">Selected upload method</div>
+        <div style="display:flex; gap:24px;">
+          <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Radio" from="" label="Batch Create" checked="{{ isBatchCreate }}" on-change="{{ selectBatchCreate }}" hint-size="auto,24px"></x-import>
+          <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Radio" from="" label="Batch Edit" checked="{{ isBatchEdit }}" on-change="{{ selectBatchEdit }}" hint-size="auto,24px"></x-import>
+        </div>
+      </div>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Select" from="" label="Select Store *" placeholder="Select Store" options="{{ storefrontOptions }}" hint-size="100%,64px"></x-import>
+      <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Select" from="" label="Select Product Ready Method *" placeholder="Select Product Ready Method" options="{{ readyMethodOptions }}" hint-size="100%,64px"></x-import>
+    </div>
+  </x-import>
+</sc-if>
+
+<sc-if value="{{ showBatchCreate }}">
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Modal" from="" title="Batch Create Bundle" size="md" on-close="{{ closeModal }}" actions="{{ batchFileActions }}" hint-size="656px,auto">
+    {{ batchFileBody }}
+  </x-import>
+</sc-if>
+
+<sc-if value="{{ showBatchEdit }}">
+  <x-import component-from-global-scope="ShoalterMMSDesignSystem_192af1.Modal" from="" title="Batch Edit Bundle" size="md" on-close="{{ closeModal }}" actions="{{ batchFileActions }}" hint-size="656px,auto">
+    {{ batchFileBody }}
+  </x-import>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;filterStyle&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;chips&quot;, &quot;options&quot;: [&quot;dropdown&quot;, &quot;chips&quot;], &quot;tsType&quot;: &quot;'dropdown'|'chips'&quot;, &quot;section&quot;: &quot;Feel&quot;},
+  &quot;density&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;comfortable&quot;, &quot;options&quot;: [&quot;comfortable&quot;, &quot;compact&quot;], &quot;tsType&quot;: &quot;'comfortable'|'compact'&quot;, &quot;section&quot;: &quot;Feel&quot;},
+  &quot;resultsView&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;table&quot;, &quot;options&quot;: [&quot;table&quot;, &quot;cards&quot;], &quot;tsType&quot;: &quot;'table'|'cards'&quot;, &quot;section&quot;: &quot;Feel&quot;}
+}">
+class Component extends DCLogic {
+  state = {
+    page: 1,
+    pageSize: '10',
+    storefront: null,
+    readyMethod: null,
+    status: null,
+    modal: null, // 'audit' | 'editBundle' | 'bundleSet' | 'batchOption' | 'batchCreate' | 'batchEdit'
+    editingRow: null,
+    batchMethod: 'create',
+  };
+
+  bundles = [
+    { parentSku: 'PB-100234', storefront: 'HKTVmall', nameTC: '夏日套裝A', nameEN: 'Summer Bundle Set A', ready: 'Consignment', available: 120, preset: 2, status: 'Online', updated: '2026-06-30' },
+    { parentSku: 'PB-100235', storefront: 'The Place', nameTC: '護膚套裝', nameEN: 'Skincare Duo Pack', ready: '3PL', available: 45, preset: 3, status: 'Online', updated: '2026-06-28' },
+    { parentSku: 'PB-100236', storefront: 'HKTVmall', nameTC: '廚具三件套', nameEN: 'Kitchen Trio Bundle', ready: 'Consignment', available: 0, preset: 3, status: 'Offline', updated: '2026-06-20' },
+    { parentSku: 'PB-100237', storefront: 'HKTVmall', nameTC: '文具套裝B', nameEN: 'Stationery Combo B', ready: '3PL', available: 210, preset: 4, status: 'Online', updated: '2026-06-18' },
+    { parentSku: 'PB-100238', storefront: 'The Place', nameTC: '家居清潔組合', nameEN: 'Home Cleaning Set', ready: 'Consignment', available: 76, preset: 2, status: 'Offline', updated: '2026-06-15' },
+    { parentSku: 'PB-100239', storefront: 'HKTVmall', nameTC: '零食禮盒', nameEN: 'Snack Gift Box', ready: '3PL', available: 300, preset: 5, status: 'Online', updated: '2026-06-10' },
+  ];
+
+  setStorefront = (v) => this.setState({ storefront: v });
+  setReadyMethod = (v) => this.setState({ readyMethod: v });
+  setStatus = (v) => this.setState({ status: v });
+  setPage = (p) => this.setState({ page: p });
+  setPageSize = (v) => this.setState({ pageSize: v });
+  clearAll = () => this.setState({ storefront: null, readyMethod: null, status: null });
+
+  openAudit = (row) => this.setState({ modal: 'audit', editingRow: row });
+  openEditBundle = (row) => this.setState({ modal: 'editBundle', editingRow: row });
+  openBundleSet = () => this.setState({ modal: 'bundleSet' });
+  closeBundleSet = () => this.setState({ modal: 'editBundle' });
+  closeModal = () => this.setState({ modal: null, editingRow: null });
+  openBatchOption = () => this.setState({ modal: 'batchOption', batchMethod: 'create' });
+  selectBatchCreate = () => this.setState({ batchMethod: 'create' });
+  selectBatchEdit = () => this.setState({ batchMethod: 'edit' });
+  goBatchNext = () => this.setState({ modal: this.state.batchMethod === 'create' ? 'batchCreate' : 'batchEdit' });
+
+  makeRowActions(b, Icon, Dropdown, IconButton) {
+    return React.createElement(Dropdown, {
+      align: 'right',
+      trigger: React.createElement(IconButton, { style: 'neutral-ghost', size: 'sm', icon: React.createElement(Icon, { name: 'Navigation', size: 16 }), 'aria-label': 'Row actions' }),
+      items: [
+        { label: 'Edit', onClick: () => this.openEditBundle(b) },
+        { label: 'Audit', onClick: () => this.openAudit(b) },
+      ],
+    });
+  }
+
+  renderVals() {
+    const { Icon, Avatar, Breadcrumb, Button, Tag, Checkbox, Dropdown, IconButton, Dropzone, Chip, Card } = window.ShoalterMMSDesignSystem_192af1;
+    const s = this.state;
+    const filterStyle = this.props.filterStyle ?? 'dropdown';
+    const density = this.props.density ?? 'comfortable';
+    const resultsView = this.props.resultsView ?? 'table';
+    const isCompact = density === 'compact';
+    const contentPadding = isCompact ? 14 : 24;
+    const sectionGap = isCompact ? 10 : 16;
+    const resultsGap = isCompact ? 6 : 12;
+    const footerPadding = isCompact ? 8 : 12;
+    const cardGap = isCompact ? 10 : 16;
+
+    const sidebarItems = [
+      { value: 'category', label: 'Product Category', icon: React.createElement(Icon, { name: 'Product', size: 18 }) },
+      { value: 'management', label: 'Product Management', icon: React.createElement(Icon, { name: 'Product', size: 18 }) },
+      { value: 'bundle', label: 'Bundle Setting', icon: React.createElement(Icon, { name: 'Order', size: 18 }) },
+      { value: 'bank', label: 'Merchant Bank', icon: React.createElement(Icon, { name: 'Payment', size: 18 }) },
+    ];
+    const sidebarLogo = React.createElement('img', { src: '_ds/shoalter-mms-design-system-192af1bb-14c1-4ce4-a34d-8124e503654a/assets/logo/mark-white.svg', style: { width: 24, height: 24 } });
+
+    const topbarLeft = React.createElement(Breadcrumb, { items: [{ label: 'MMS' }, { label: 'Product & Inventory' }, { label: 'Bundle Setting' }] });
+    const topbarRight = React.createElement(Avatar, { name: 'edith+rm2', size: 32 });
+
+    const pageActions = React.createElement('div', { style: { display: 'flex', gap: 12 } },
+      React.createElement(Button, { style: 'primary-outline', size: 'md', onClick: () => this.openEditBundle(null) }, 'Single Create'),
+      React.createElement(Button, { style: 'primary-solid', size: 'md', onClick: this.openBatchOption }, 'Batch Create/Edit')
+    );
+
+    const storefrontOptions = [
+      { value: 'hktvmall', label: 'HKTVmall' },
+      { value: 'theplace', label: 'The Place' },
+    ];
+    const readyMethodOptions = [
+      { value: 'consignment', label: 'Consignment' },
+      { value: '3pl', label: '3PL' },
+    ];
+    const statusOptions = [
+      { value: 'online', label: 'Online' },
+      { value: 'offline', label: 'Offline' },
+    ];
+    const pageSizeOptions = [
+      { value: '10', label: '10 / page' },
+      { value: '20', label: '20 / page' },
+      { value: '50', label: '50 / page' },
+    ];
+
+    const tableColumns = [
+      { key: 'select', label: '' },
+      { key: 'parentSku', label: 'Parent SKU ID' },
+      { key: 'storefront', label: 'Storefront Code' },
+      { key: 'nameTC', label: 'Bundle Name (Traditional Chinese)' },
+      { key: 'nameEN', label: 'Bundle Name (English)' },
+      { key: 'ready', label: 'Product Ready Method' },
+      { key: 'available', label: 'Available QTY' },
+      { key: 'preset', label: 'Pre-Set QTY' },
+      { key: 'status', label: 'Status' },
+      { key: 'updated', label: 'Update Time' },
+      { key: 'actions', label: 'Action' },
+    ];
+    const tableRows = this.bundles.map((b) => ({
+      select: React.createElement(Checkbox, null),
+      parentSku: b.parentSku,
+      storefront: b.storefront,
+      nameTC: b.nameTC,
+      nameEN: b.nameEN,
+      ready: b.ready,
+      available: b.available,
+      preset: b.preset,
+      status: React.createElement(Tag, { color: b.status === 'Online' ? 'green' : 'secondary' }, b.status),
+      updated: b.updated,
+      actions: React.createElement(Dropdown, {
+        align: 'right',
+        trigger: React.createElement(IconButton, { style: 'neutral-ghost', size: 'sm', icon: React.createElement(Icon, { name: 'Navigation', size: 16 }), 'aria-label': 'Row actions' }),
+        items: [
+          { label: 'Edit', onClick: () => this.openEditBundle(b) },
+          { label: 'Audit', onClick: () => this.openAudit(b) },
+        ],
+      }),
+    }));
+
+    const chipFor = (options, current, setter) => options.map((o) => ({
+      label: o.label,
+      selected: current === o.value,
+      onClick: () => setter(current === o.value ? null : o.value),
+    }));
+    const storefrontChips = chipFor(storefrontOptions, s.storefront, this.setStorefront);
+    const readyChips = chipFor(readyMethodOptions, s.readyMethod, this.setReadyMethod);
+    const statusChips = chipFor(statusOptions, s.status, this.setStatus);
+
+    const bundleCards = this.bundles.map((b) => ({
+      title: b.parentSku,
+      actions: this.makeRowActions(b, Icon, Dropdown, IconButton),
+      body: React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, marginTop: 8 } },
+        React.createElement('div', { style: { fontSize: 14, fontWeight: 500, color: 'var(--text-body-primary-neutral)' } }, b.nameEN),
+        React.createElement('div', { style: { fontSize: 12, color: 'var(--text-caption-primary)' } }, b.nameTC),
+        React.createElement('div', { style: { fontSize: 12, color: 'var(--text-body-secondary-neutral)' } }, `${b.storefront} · ${b.ready}`),
+        React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 } },
+          React.createElement(Tag, { color: b.status === 'Online' ? 'green' : 'secondary' }, b.status),
+          React.createElement('span', { style: { fontSize: 12, color: 'var(--text-caption-primary)' } }, `Available ${b.available} · Preset ${b.preset}`)
+        )
+      ),
+    }));
+
+    const actionTrigger = React.createElement(Button, { style: 'primary-outline', size: 'md', trailingIcon: React.createElement(Icon, { name: 'Down', size: 14 }) }, 'Action');
+    const actionItems = [
+      { label: 'Edit History' },
+      { label: 'Export' },
+      { label: 'Export All' },
+    ];
+
+    const auditActions = React.createElement(Button, { style: 'primary-solid', size: 'md', onClick: this.closeModal }, 'Done');
+
+    const editBundleTitle = s.editingRow ? `Edit Bundle Set — ${s.editingRow.parentSku}` : 'Create Bundle Set';
+    const editBundleFooter = React.createElement(React.Fragment, null,
+      React.createElement(Button, { style: 'primary-outline', size: 'md', onClick: this.closeModal }, 'Cancel'),
+      React.createElement(Button, { style: 'primary-solid', size: 'md', onClick: this.closeModal }, 'Save')
+    );
+
+    const skuColumns = [
+      { key: 'image', label: 'Image' },
+      { key: 'skuId', label: 'SKU ID' },
+      { key: 'nameCH', label: 'SKU Name (CH)' },
+      { key: 'nameEN', label: 'SKU Name (EN)' },
+      { key: 'ready', label: 'Product Ready Method' },
+      { key: 'qty', label: 'QTY per Bundle' },
+    ];
+    const bundleSetFooter = React.createElement(Button, { style: 'primary-solid', size: 'md', onClick: this.closeBundleSet }, 'Done');
+
+    const batchOptionActions = React.createElement(React.Fragment, null,
+      React.createElement(Button, { style: 'primary-outline', size: 'md', onClick: this.closeModal }, 'Cancel'),
+      React.createElement(Button, { style: 'primary-solid', size: 'md', onClick: this.goBatchNext }, 'Next')
+    );
+
+    const batchFileActions = React.createElement(React.Fragment, null,
+      React.createElement(Button, { style: 'primary-outline', size: 'md', onClick: this.closeModal }, 'Cancel'),
+      React.createElement(Button, { style: 'primary-solid', size: 'md', onClick: this.closeModal }, 'Submit')
+    );
+
+    const batchFileBody = React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: 20 } },
+      React.createElement('div', null,
+        React.createElement('div', { style: { fontSize: 14, marginBottom: 8, color: 'var(--text-body-primary-neutral)' } }, '1. Download Template File or Upload Batch File.'),
+        React.createElement(Button, { style: 'primary-outline', size: 'sm' }, 'Download Template')
+      ),
+      React.createElement('div', null,
+        React.createElement('div', { style: { fontSize: 14, marginBottom: 4, color: 'var(--text-body-primary-neutral)' } }, '2. Add your data to template file.'),
+        React.createElement('div', { style: { fontSize: 12, color: 'var(--text-caption-primary)' } }, 'If using Excel, make sure to export or save as .xls or xlsx.'),
+        React.createElement('div', { style: { fontSize: 12, color: 'var(--text-helper-error)', marginTop: 4 } }, 'Reminder: Do not modify template title fields, or error may occur.')
+      ),
+      React.createElement('div', null,
+        React.createElement('div', { style: { fontSize: 14, marginBottom: 8, color: 'var(--text-body-primary-neutral)' } }, '3. Upload Batch File.'),
+        React.createElement(Dropzone, { label: 'Click or drag file to this area to upload', description: 'File only allow CSV' })
+      )
+    );
+
+    const filtered = this.bundles;
+    const noneSelected = true;
+
+    return {
+      sidebarItems, sidebarLogo, topbarLeft, topbarRight, pageActions,
+      storefrontOptions, readyMethodOptions, statusOptions, pageSizeOptions,
+      storefrontValue: s.storefront, readyMethodValue: s.readyMethod, statusValue: s.status, pageSizeValue: s.pageSize,
+      setStorefront: this.setStorefront, setReadyMethod: this.setReadyMethod, setStatus: this.setStatus,
+      setPage: this.setPage, setPageSize: this.setPageSize, clearAll: this.clearAll,
+      resultsLabel: '1–' + Math.min(filtered.length, 10) + ' of 265 results',
+      tableColumns, tableRows,
+      page: s.page,
+      actionTrigger, actionItems,
+      selectedLabel: '0 Bundles Selected', noneSelected,
+      showAudit: s.modal === 'audit', showEditBundle: s.modal === 'editBundle', showBundleSet: s.modal === 'bundleSet',
+      showBatchOption: s.modal === 'batchOption', showBatchCreate: s.modal === 'batchCreate', showBatchEdit: s.modal === 'batchEdit',
+      closeModal: this.closeModal, closeBundleSet: this.closeBundleSet, openBundleSet: this.openBundleSet,
+      auditActions, editBundleTitle, editBundleFooter,
+      skuColumns, skuRows: [], bundleSetFooter,
+      isBatchCreate: s.batchMethod === 'create', isBatchEdit: s.batchMethod === 'edit',
+      selectBatchCreate: this.selectBatchCreate, selectBatchEdit: this.selectBatchEdit,
+      batchOptionActions, batchFileActions, batchFileBody,
+      isDropdownFilters: filterStyle === 'dropdown', isChipFilters: filterStyle === 'chips',
+      storefrontChips, readyChips, statusChips,
+      isTableView: resultsView === 'table', isCardView: resultsView === 'cards', bundleCards,
+      contentPadding, sectionGap, resultsGap, footerPadding, cardGap,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* ---------- Sidebar ---------- */
+.ds-sidebar { background: var(--surface-sidebar-surface-default); width: 220px; display: flex; flex-direction: column; padding: var(--space-component-padding-md) 0; }
+.ds-sidebar-item {
+  display: flex; align-items: center; gap: var(--space-component-gap-sm);
+  padding: var(--space-component-padding-sm) var(--space-component-padding-lg);
+  color: var(--interactive-sidebar-item-label-default);
+  cursor: pointer; font-size: var(--text-sm-size);
+}
+.ds-sidebar-item svg, .ds-sidebar-item .ds-sidebar-icon { color: var(--interactive-sidebar-item-icon-default); }
+.ds-sidebar-item:hover { background: var(--interactive-sidebar-item-surface-hover); color: var(--interactive-sidebar-item-label-hover); }
+.ds-sidebar-item.is-active { background: var(--interactive-sidebar-item-surface-active); color: var(--interactive-sidebar-item-label-active); }
+.ds-sidebar-item.is-active svg, .ds-sidebar-item.is-active .ds-sidebar-icon { color: var(--interactive-sidebar-item-icon-active); }
+.ds-sidebar-header { display: flex; align-items: center; gap: var(--space-component-gap-sm); padding: var(--space-component-padding-md) var(--space-component-padding-lg); color: var(--interactive-sidebar-header-label-default); font-weight: var(--font-weight-medium); }
+
+/* ---------- Topbar ---------- */
+.ds-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  height: var(--component-height-3xl);
+  padding: 0 var(--space-component-padding-lg);
+  background: var(--surface-topbar-background-default);
+  border-bottom: var(--border-sm) solid var(--global-divider-default);
+}
+.ds-topbar-left { display: flex; align-items: center; gap: var(--space-component-gap-md); }
+.ds-topbar-right { display: flex; align-items: center; gap: var(--space-component-gap-sm); }
+
+/* ---------- Header (section header w/ title + actions) ---------- */
+.ds-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-layout-section-padding-md) 0; }
+.ds-header-title { font-size: var(--text-xl-size); font-weight: var(--font-weight-medium); color: var(--text-heading-primary-neutral); }
+
+/* ---------- Page title ---------- */
+.ds-page-title { display: flex; flex-direction: column; gap: 4px; margin-bottom: var(--space-layout-section-gap-md); }
+.ds-page-title-heading { font-size: var(--text-2xl-size); line-height: var(--text-2xl-line-height); font-weight: var(--font-weight-medium); color: var(--text-heading-primary-neutral); }
+.ds-page-title-sub { font-size: var(--text-sm-size); color: var(--text-heading-secondary-neutral); }
+
+/* ---------- Footer ---------- */
+.ds-footer { display: flex; align-items: center; justify-content: space-between; padding: var(--space-component-padding-lg); border-top: var(--border-sm) solid var(--global-divider-default); background: var(--global-background-elevated); font-size: var(--text-xs-size); color: var(--text-caption-primary); }
+.ds-footer > span:last-child { display: flex; align-items: center; gap: var(--space-component-gap-md); }
+
+/* ---------- Action panel (side drawer) ---------- */
+.ds-action-panel-overlay { position: fixed; inset: 0; background: var(--global-overlay-default); display: flex; justify-content: flex-end; z-index: 90; }
+.ds-action-panel {
+  width: 420px; max-width: 90vw; height: 100%; background: var(--global-background-elevated);
+  box-shadow: var(--shadow-xl); display: flex; flex-direction: column;
+}
+.ds-action-panel-header { display: flex; justify-content: space-between; align-items: center; padding: var(--space-component-padding-lg); border-bottom: var(--border-sm) solid var(--global-divider-default); }
+.ds-action-panel-body { padding: var(--space-component-padding-lg); flex: 1; overflow-y: auto; }
+.ds-action-panel-footer { padding: var(--space-component-padding-lg); border-top: var(--border-sm) solid var(--global-divider-default); display: flex; justify-content: flex-end; gap: var(--space-component-gap-sm); }
+
+/* ---------- Overlay (plain scrim) ---------- */
+.ds-overlay { position: absolute; inset: 0; background: var(--global-overlay-default); }
+
+/* ---------- Scrollbar ---------- */
+.ds-scrollbar-track { width: 6px; border-radius: var(--radius-full); background: var(--global-scrollbar-thumb-track-default); }
+.ds-scrollbar-thumb { width: 6px; border-radius: var(--radius-full); background: var(--global-scrollbar-thumb-default); }
+.ds-scroll-region::-webkit-scrollbar { width: 6px; height: 6px; }
+.ds-scroll-region::-webkit-scrollbar-thumb { background: var(--global-scrollbar-thumb-default); border-radius: var(--radius-full); }
+.ds-scroll-region::-webkit-scrollbar-track { background: var(--global-scrollbar-thumb-track-default); }
