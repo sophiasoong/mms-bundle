@@ -10,8 +10,6 @@ import {
   PageTitle,
   Breadcrumb,
   Pagination,
-  Dropdown,
-  Icon,
 } from './ds.js';
 import SidebarNav from './components/SidebarNav.jsx';
 import TopbarNew from './components/TopbarNew.jsx';
@@ -28,6 +26,7 @@ import EditBundleModal from './components/EditBundleModal.jsx';
 import SkuDetailModal from './components/SkuDetailModal.jsx';
 import BundleSetPanel from './components/BundleSetPanel.jsx';
 import CreateBundlePage from './components/CreateBundlePage.jsx';
+import EditHistoryPage from './components/EditHistoryPage.jsx';
 import { BatchUploadOptionModal, BatchFileModal } from './components/BatchModals.jsx';
 
 const STATUS_LABEL = { online: 'Online', offline: 'Offline', suspended: 'Suspended' };
@@ -72,7 +71,7 @@ export default function OverviewPage() {
   const [selected, setSelected] = useState(() => new Set());
 
   const [modal, setModal] = useState(null); // null | 'audit' | 'editBundle' | 'skuDetail' | 'bundleSet' | 'batchOption' | 'batchCreate' | 'batchEdit'
-  const [view, setView] = useState('list'); // 'list' | 'create'
+  const [view, setView] = useState('list'); // 'list' | 'create' | 'history'
   const [bundleSetReturn, setBundleSetReturn] = useState(null);
   const [editingRow, setEditingRow] = useState(null);
   const [nameTC, setNameTC] = useState('');
@@ -118,6 +117,9 @@ export default function OverviewPage() {
     setView('create');
   };
   const closeCreatePage = () => setView('list');
+
+  const openEditHistory = () => setView('history');
+  const closeEditHistory = () => setView('list');
 
   const openAudit = (row) => {
     setEditingRow(row);
@@ -166,7 +168,6 @@ export default function OverviewPage() {
   const rowActions = (b) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
       <Button style="primary-ghost" size="sm" onClick={() => openEditBundle(b)}>Edit</Button>
-      <Button style="primary-ghost" size="sm" onClick={() => openAudit(b)}>Audit</Button>
     </div>
   );
 
@@ -277,6 +278,8 @@ export default function OverviewPage() {
               onCancel={closeCreatePage}
               onSave={closeCreatePage}
             />
+          ) : view === 'history' ? (
+            <EditHistoryPage onBack={closeEditHistory} />
           ) : (
           <>
           <Breadcrumb items={[{ label: 'MMS' }, { label: 'Product & Inventory' }, { label: 'Bundle Setting' }]} />
@@ -285,25 +288,26 @@ export default function OverviewPage() {
             className="page-title-fig"
             title="Bundle Setting"
             actions={(
-              <Dropdown
-                align="right"
-                trigger={(
-                  <Button style="primary-solid" size="md">
-                    Create
-                    <Icon name="Down" size={16} />
-                  </Button>
-                )}
-                items={[
-                  { label: 'Single Create', onClick: openCreatePage },
-                  { label: 'Batch Upload', onClick: openBatchOption },
-                ]}
-              />
+              <div style={{ display: 'flex', gap: 8 }}>
+                <Button style="primary-outline" size="md" onClick={openBatchOption}>Batch Create/Edit</Button>
+                <Button style="primary-solid" size="md" onClick={openCreatePage}>Create Bundle Set</Button>
+              </div>
             )}
           />
 
           <div
             style={{
               marginTop: 16,
+              display: 'flex',
+              gap: selected.size > 0 ? 16 : 0,
+              alignItems: 'flex-start',
+              transition: 'gap var(--duration-normal, 240ms) var(--ease-standard, ease)',
+            }}
+          >
+          <div
+            style={{
+              flex: 1,
+              minWidth: 0,
               background: 'var(--surface-card-surface-default, #fff)',
               borderRadius: 'var(--radius-md)',
               overflow: 'hidden',
@@ -356,17 +360,13 @@ export default function OverviewPage() {
                 {filtered.length} of 265 results
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{ fontSize: 14, color: 'var(--text-body-secondary-neutral)' }}>
-                  Last Updated 2026-07-07 09:41
-                </div>
                 <div style={{ display: 'flex', gap: 8 }}>
-                  <Button style="primary-outline" size="md" onClick={() => {}}>Refresh</Button>
-                  <Button style="primary-outline" size="md" onClick={() => {}}>Export</Button>
+                  <Button style="primary-outline" size="md" onClick={openEditHistory}>Edit History</Button>
                 </div>
               </div>
             </div>
 
-            <Table columns={tableColumns} rows={tableRows} />
+            <Table className="overview-table" columns={tableColumns} rows={tableRows} />
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: 16 }}>
               <div style={{ fontSize: 14, color: 'var(--text-body-secondary-neutral)' }}>
@@ -383,6 +383,42 @@ export default function OverviewPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div
+            style={{
+              width: selected.size > 0 ? 280 : 0,
+              opacity: selected.size > 0 ? 1 : 0,
+              flexShrink: 0,
+              overflow: 'hidden',
+              transition: 'width var(--duration-normal, 240ms) var(--ease-standard, ease), opacity var(--duration-normal, 240ms) var(--ease-standard, ease)',
+            }}
+          >
+            <div
+              style={{
+                width: 280,
+                display: 'flex',
+                flexDirection: 'column',
+                background: 'var(--global-background-surface, #fff)',
+                borderRadius: 'var(--radius-md)',
+              }}
+            >
+              <div
+                style={{
+                  padding: 16,
+                  borderBottom: '1px solid var(--global-divider-default, #f4f4f4)',
+                }}
+              >
+                <span className="ds-modal-title">Selected Action</span>
+              </div>
+              <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <div style={{ fontSize: 14, color: 'var(--text-body-secondary-neutral)' }}>
+                  {selected.size} bundle{selected.size === 1 ? '' : 's'} selected
+                </div>
+                <Button style="primary-solid" size="md" onClick={() => {}} className="align-self-start">Export Selected</Button>
+              </div>
+            </div>
+          </div>
           </div>
 
           <div style={{ height: 80 }} />
