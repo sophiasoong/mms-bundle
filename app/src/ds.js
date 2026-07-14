@@ -32,6 +32,7 @@ export const {
   Pagination,
   Step,
   Footer,
+  Toast,
 } = DS;
 
 export default DS;

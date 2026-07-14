@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Table,
   Badge,
@@ -10,6 +10,8 @@ import {
   PageTitle,
   Breadcrumb,
   Pagination,
+  Toast,
+  Icon,
 } from './ds.js';
 import SidebarNav from './components/SidebarNav.jsx';
 import TopbarNew from './components/TopbarNew.jsx';
@@ -84,12 +86,21 @@ export default function OverviewPage() {
   const [batchMethod, setBatchMethod] = useState('create');
   const [batchStore, setBatchStore] = useState(storeOptionsByBusinessUnit.HKTVmall[0].value);
 
-  const filtered = useMemo(() => bundles.filter((b) => {
+  const [bundleList, setBundleList] = useState(bundles);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    if (!toast) return undefined;
+    const timer = setTimeout(() => setToast(null), 4000);
+    return () => clearTimeout(timer);
+  }, [toast]);
+
+  const filtered = useMemo(() => bundleList.filter((b) => {
     if (skuSearch && !b.parentSku.toLowerCase().includes(skuSearch.toLowerCase())) return false;
     if (storefront.length && !storefront.includes(b.storefrontCode)) return false;
     if (status.length && !status.some((v) => b.status === STATUS_LABEL[v])) return false;
     return true;
-  }), [skuSearch, storefront, status]);
+  }), [bundleList, skuSearch, storefront, status]);
 
   const clearAll = () => {
     setSkuSearch('');
@@ -152,6 +163,31 @@ export default function OverviewPage() {
     setBatchStore(storeOptionsByBusinessUnit[bu][0].value);
   };
   const goBatchNext = () => setModal(batchMethod === 'create' ? 'batchCreate' : 'batchEdit');
+
+  const submitBatchFile = ({ file, success, failed, total }) => {
+    const storeLabel = (storeOptionsByBusinessUnit[businessUnit] || []).find((s) => s.value === batchStore);
+    const now = new Date();
+    const newRow = {
+      parentSku: `PB-${Math.floor(100000 + Math.random() * 899999)}`,
+      storefront: businessUnit === 'HKTVmall' ? 'HKTVmall' : 'The Place',
+      storefrontCode: storeLabel ? storeLabel.value : batchStore,
+      nameTC: '批量上傳套裝',
+      nameEN: (file?.name || 'Batch Upload').replace(/\.(xlsx|xls)$/i, ''),
+      ready: 'Consignment',
+      available: 0,
+      preset: 0,
+      status: 'Online',
+      updated: now.toISOString().slice(0, 10),
+      updatedTime: now.toTimeString().slice(0, 5),
+      createdBy: 'admin.chan',
+      createdDate: now.toISOString().slice(0, 10),
+      updatedBy: 'admin.chan',
+      image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=80&h=80&fit=crop&q=80',
+    };
+    setBundleList((prev) => [newRow, ...prev]);
+    closeModal();
+    setToast(`Batch upload complete — ${success} of ${total} SKU(s) processed successfully${failed ? `, ${failed} failed` : ''}.`);
+  };
 
   const toggleSelect = (parentSku, checked) => {
     setSelected((prev) => {
@@ -471,7 +507,33 @@ export default function OverviewPage() {
       )}
 
       {(modal === 'batchCreate' || modal === 'batchEdit') && (
-        <BatchFileModal mode={batchMethod} onClose={closeModal} onSubmit={closeModal} />
+        <BatchFileModal mode={batchMethod} onClose={closeModal} onSubmit={submitBatchFile} />
+      )}
+
+      {toast && (
+        <div style={{ position: 'fixed', top: 148, right: 24, zIndex: 1000 }}>
+          <Toast
+            tone="success"
+            icon={(
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="10" fill="var(--feedback-toast-icon-success, #52c41a)" />
+                <path d="M6 10.2l2.5 2.5L14 7.2" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+            )}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <span style={{ flex: 1 }}>{toast}</span>
+              <button
+                type="button"
+                onClick={() => setToast(null)}
+                aria-label="Dismiss"
+                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', flexShrink: 0 }}
+              >
+                <Icon name="Close" size={16} />
+              </button>
+            </div>
+          </Toast>
+        </div>
       )}
     </div>
   );
