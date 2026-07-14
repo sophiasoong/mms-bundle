@@ -53,3 +53,25 @@ export const pageSizeOptions = [
   { value: '20', label: '20 / page' },
   { value: '50', label: '50 / page' },
 ];
+
+export const editHistory = [
+  { editType: 'Batch edit bundle', fileName: 'Batch_Edit_72858.xlsx', status: 'Updating', editBy: 'olivia.cheng@shoalter.com', editTime: '2025-08-18 16:50' },
+  { editType: 'Batch edit bundle', fileName: 'Batch_Edit_35609.xlsx', status: 'Failed', editBy: 'karen.ho@shoalter.com', editTime: '2025-05-12 07:02' },
+  { editType: 'Batch create bundle', fileName: 'Batch_Create_98117.xlsx', status: 'Success', editBy: 'david.lin@shoalter.com', editTime: '2026-01-27 15:41' },
+  { editType: 'Batch create bundle', fileName: 'Batch_Create_26078.xlsx', status: 'Updating', editBy: 'iris.tsai@shoalter.com', editTime: '2024-01-24 03:03' },
+  { editType: 'Batch create bundle', fileName: 'Batch_Create_70424.xlsx', status: 'Success', editBy: 'olivia.cheng@shoalter.com', editTime: '2026-10-15 16:04' },
+  { editType: 'Batch edit bundle', fileName: 'Batch_Edit_82083.xlsx', status: 'Failed', editBy: 'bob.chen@shoalter.com', editTime: '2026-05-10 17:57' },
+  { editType: 'Batch edit bundle', fileName: 'Batch_Edit_67592.xlsx', status: 'Success', editBy: 'emma.liu@shoalter.com', editTime: '2026-02-01 03:33' },
+  { editType: 'Batch edit bundle', fileName: 'Batch_Edit_22212.xlsx', status: 'Updating', editBy: 'iris.tsai@shoalter.com', editTime: '2025-11-09 13:00' },
+  { editType: 'Single edit bundle', fileName: 'Create_72372.xlsx', status: 'Failed', editBy: 'iris.tsai@shoalter.com', editTime: '2024-07-19 22:05' },
+  { editType: 'Sync offline bundle', fileName: 'Bundle_Offline_75205.xlsx', status: 'Failed', editBy: 'iris.tsai@shoalter.com', editTime: '2025-02-11 06:24' },
+  { editType: 'Sync offline bundle', fileName: 'Bundle_Offline_21918.xlsx', status: 'Success', editBy: 'karen.ho@shoalter.com', editTime: '2025-01-13 13:26' },
+  { editType: 'Batch edit bundle', fileName: 'Batch_Edit_27136.xlsx', status: 'Updating', editBy: 'olivia.cheng@shoalter.com', editTime: '2024-03-23 07:39' },
+  { editType: 'Single edit bundle', fileName: 'Create_45802.xlsx', status: 'Updating', editBy: 'david.lin@shoalter.com', editTime: '2025-01-09 20:18' },
+];
+
+export const editStatusOptions = [
+  { value: 'Updating', label: 'Updating' },
+  { value: 'Failed', label: 'Failed' },
+  { value: 'Success', label: 'Success' },
+];
